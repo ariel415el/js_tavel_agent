@@ -46,7 +46,11 @@ const EN_MONTH_NUMBERS = {'JAN': 1, 'FEB': 2, 'MAR': 3, 'APR': 4, 'MAY': 5, 'JUN
 //
 //const RETOUR = { en: 'Inbound flt.', fr: 'Retour' };
 
-SEAT_CODES = { "E": "Economy CL" };
+const SEAT_CODES = {
+    en: { "E": "Economy CL" },
+    fr: { "E": "Economy CL" },
+    he: { "E": "מח. תיירים" }
+};
 
 const FINAL = {
     "en": FINAL_EN,

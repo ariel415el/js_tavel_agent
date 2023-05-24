@@ -1,4 +1,3 @@
-
 function parseAmadeusCode(code) {
   const lines = code.split('\n');
   const results = [];
@@ -64,9 +63,9 @@ function itinerary(flights, airports_dict, language) {
     const flight = flights[i];
     text += `${AIRLINES[flight.airline]} - *${flight.airline}${flight.flight_code}*\n`;
     text += `${airports_dict[flight.depart_airport]} (${flight.depart_airport}) ➡️ ${airports_dict[flight.dest_airport]} (${flight.dest_airport})\n`;
-    text += `${SEAT_CODES[flight.class_code]}'\n`;
-    text += `${DPT[language]} ${parseTimeAndDate(flight.depart_time, flight.depart_date, language)}'\n`;
-    text += `${ARR[language]} ${parseTimeAndDate(flight.dest_time, flight.dest_date, language)}'\n`;
+    text += `${SEAT_CODES[language][flight.class_code]}\n`;
+    text += `${DPT[language]} ${parseTimeAndDate(flight.depart_time, flight.depart_date, language)}\n`;
+    text += `${ARR[language]} ${parseTimeAndDate(flight.dest_time, flight.dest_date, language)}\n`;
     text += ' (Seat XX - ) \n\n';
   }
 
