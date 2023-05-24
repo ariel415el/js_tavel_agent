@@ -1,4 +1,4 @@
-{
+AIRLINES = {
     "AA": "American Airlines",
     "2G": "CargoItalia (alternate)",
     "CO": "Continental Airlines",

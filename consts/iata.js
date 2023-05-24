@@ -1,4 +1,4 @@
-{
+AIRPORTS = {
     "AUS": {
         "CountryNameEn": "usa",
         "CountryNameHe": "ארצות הברית",

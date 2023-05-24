@@ -1,26 +1,116 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Character Counter</title>
-  <script src="foo.js"></script>
-  <script>
-    function callFoo() {
-      // Get the input text from the textbox
-      var inputText = document.getElementById("text-input").value;
+    <title>Message Constructor</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background-color: #333333;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-      // Call the foo function from foo.js and get the output
-      var fooOutput = foo(inputText);
+        .container {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+        }
 
-      // Display the output in the output area
-      document.getElementById("output").textContent = "Output: " + fooOutput;
-    }
-  </script>
+        .input-container {
+            margin-right: 20px;
+        }
+
+        .input-container label,
+        .input-container textarea,
+        .input-container input[type="radio"],
+        .input-container button {
+            color: #ffffff;
+        }
+
+        .input-container textarea {
+            width: 600px;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #444444;
+            border: none;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            color: #ffffff;
+            resize: vertical;
+        }
+
+        .input-container button {
+            padding: 8px 16px;
+            font-size: 16px;
+            background-color: #777777;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .output-container {
+            width: 600px;
+        }
+
+        .output-container label,
+        .output-container textarea {
+            color: #ffffff;
+        }
+
+        .output-container textarea {
+            height: 500px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #444444;
+            border: none;
+            border-radius: 4px;
+            color: #ffffff;
+            resize: vertical;
+        }
+    </style>
 </head>
 <body>
-  <h1>Call Foo</h1>
-  <label for="text-input">Enter text:</label>
-  <input type="text" id="text-input">
-  <button onclick="callFoo()">Call Foo</button>
-  <div id="output"></div>
+    <div class="container">
+        <div class="input-container">
+            <label for="text-input">Input Text:</label><br>
+            <textarea id="text-input">2  KL 462 H 13JUL 4*TLVAMS HK1  0445 0830  13JUL  E  KL/PZ8N4V</textarea><br><br>
+
+            <label for="language-choice">Language:</label><br>
+            <input type="radio" name="language" value="en" checked> English<br>
+            <input type="radio" name="language" value="fr"> French<br>
+            <input type="radio" name="language" value="he"> Hebrew<br><br>
+
+            <button onclick="constructMessage()">Construct Message</button>
+        </div>
+
+        <div class="output-container">
+            <label for="output-text">Output:</label><br>
+            <textarea id="output-text" rows="10" cols="30" readonly></textarea>
+        </div>
+    </div>
+
+    <script src="consts/iata.js"></script>
+    <script src="consts/airlines.js"></script>
+    <script src="consts/bulk_en.js"></script>
+    <script src="consts/bulk_fr.js"></script>
+    <script src="consts/bulk_he.js"></script>
+    <script src="consts/others.js"></script>
+    <script src="foo.js"></script>
+    <script>
+        function constructMessage() {
+            var inputText = document.getElementById("text-input").value;
+            var language = document.querySelector('input[name="language"]:checked').value;
+
+            try {
+                var outputText = construct_msg(inputText, language);
+                document.getElementById("output-text").value = outputText;
+            } catch (error) {
+                alert("An error occurred: " + error.message);
+            }
+        }
+    </script>
 </body>
 </html>
