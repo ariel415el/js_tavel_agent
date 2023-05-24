@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Character Counter</title>
+  <script src="foo.js"></script>
+  <script>
+    function callFoo() {
+      // Get the input text from the textbox
+      var inputText = document.getElementById("text-input").value;
+
+      // Call the foo function from foo.js and get the output
+      var fooOutput = foo(inputText);
+
+      // Display the output in the output area
+      document.getElementById("output").textContent = "Output: " + fooOutput;
+    }
+  </script>
+</head>
+<body>
+  <h1>Call Foo</h1>
+  <label for="text-input">Enter text:</label>
+  <input type="text" id="text-input">
+  <button onclick="callFoo()">Call Foo</button>
+  <div id="output"></div>
+</body>
+</html>
