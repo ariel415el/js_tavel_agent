@@ -64,10 +64,15 @@ function itinerary(flights, airports_dict, language) {
 
   for (let i = 0; i < flights.length; i++) {
     const flight = flights[i];
-    text += `${AIRLINES[flight.airline]} - *${flight.airline}${flight.flight_code}*\n`;
 
     if (language === 'he') {
-        text += `${airports_dict[flight.dest_airport]} (${flight.dest_airport}) ⬅️️ ${airports_dict[flight.depart_airport]} (${flight.depart_airport})\n`;
+        text += "טיסת ";
+    }
+
+    text += `${AIRLINES[flight.airline]} - ${flight.airline}${flight.flight_code}\n`;
+
+    if (language === 'he') {
+        text += `${airports_dict[flight.depart_airport]} (${flight.depart_airport}) ⬅️️ ${airports_dict[flight.dest_airport]} (${flight.dest_airport})\n`;
     } else {
         text += `${airports_dict[flight.depart_airport]} (${flight.depart_airport}) ➡️ ${airports_dict[flight.dest_airport]} (${flight.dest_airport})\n`;
     }
@@ -75,14 +80,13 @@ function itinerary(flights, airports_dict, language) {
     text += `${SEAT_CODES[language][flight.class_code]}\n`;
     text += `${DPT[language]} ${parseTimeAndDate(flight.depart_time, flight.depart_date, language)}\n`;
     text += `${ARR[language]} ${parseTimeAndDate(flight.dest_time, flight.dest_date, language)}\n`;
-    text += ' (Seat XX - ) \n\n';
+    text += SEAT[language] + '\n\n';
   }
 
   return text;
 }
 
 function prepare_airports_dict(language) {
-
   const lan = language === 'he' ? 'He' : 'En';
   airports = Object.fromEntries(
     Object.entries(AIRPORTS).map(([airport, vals]) => [

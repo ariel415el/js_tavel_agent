@@ -41,7 +41,11 @@ const ITINERARY = {
 };
 const EN_MONTH_NUMBERS = {'JAN': 1, 'FEB': 2, 'MAR': 3, 'APR': 4, 'MAY': 5, 'JUN': 6, 'JUL': 7, 'AUG': 8, 'SEP': 9, 'OCT': 10, 'NOV': 11, 'DEC': 12};
 
-
+const SEAT = {
+    en: "(Seat - ** )",
+    fr: "(Sieage - **)",
+    he: "(מושב - **)"
+};
 //const ALLER = { en: 'Outbound flt.', fr: 'Aller' };
 //
 //const RETOUR = { en: 'Inbound flt.', fr: 'Retour' };
