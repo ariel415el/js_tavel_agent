@@ -42,6 +42,10 @@
             resize: vertical;
         }
 
+        .output-container.text-right textarea {
+            text-align: right;
+        }
+
         .input-container button {
             padding: 8px 16px;
             font-size: 16px;
@@ -86,7 +90,7 @@
             <button onclick="constructMessage()">Construct Message</button>
         </div>
 
-        <div class="output-container">
+        <div class="output-container" id="output-container">
             <label for="output-text">Output:</label><br>
             <textarea id="output-text" rows="10" cols="30" readonly></textarea>
         </div>
@@ -107,6 +111,14 @@
             try {
                 var outputText = construct_msg(inputText, language);
                 document.getElementById("output-text").value = outputText;
+
+                var outputContainer = document.getElementById("output-container");
+                if (language === "he") {
+                    outputContainer.classList.add("text-right");
+                } else {
+                    outputContainer.classList.remove("text-right");
+                }
+
             } catch (error) {
                 alert("An error occurred: " + error.message);
             }

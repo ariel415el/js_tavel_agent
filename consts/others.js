@@ -1,13 +1,13 @@
 const HALLO = {
-  en: "XXXXX, Shalom!\n\n👉❗❗\nIn reply to your request, you'll find below my *XXX proposal* for yours upcoming trip to\n\n",
-  fr: "XXXXX, Shalom!\n\n👉❗❗\nSuite à ta/votre demande, tu/vous trouveras ci-dessous, l’itinéraire de vol proposé pour ton/votre prochain voyage à \n\n",
-  he: "XXXXX, שלום!\n\n👉❗❗\nבהמשך לפנייתך להלן פרטי ההצעה המבוקשת עבור נסיעתך הקרובה \n\n",
+  en: "*****, Shalom!\n\n👉❗❗\nIn reply to your request, you'll find below my *XXX proposal* for yours upcoming trip to\n\n",
+  fr: "*****, Shalom!\n\n👉❗❗\nSuite à ta/votre demande, tu/vous trouveras ci-dessous, l’itinéraire de vol proposé pour ton/votre prochain voyage à \n\n",
+  he: ",שלום *****\n\n👉❗❗\n:בהמשך לפנייתך להלן פרטי ההצעה המבוקשת עבור נסיעתך הקרובה\n\n",
 };
 
 const KINDLY_REPLY = {
   en: "Please, kindly reply (from within this WhatsApp message) with your *Immediate/Today ticket issuance approval* accordingly with the content of this proposal.\n\n",
   fr: "SVP Merci de valider à l’immédiat, l’émission de ton/votre/vos billet(s) en répondant a ce message WhatsApp avec ton/votre confirmation\n\n",
-  he: "*נא לאשר את הנפקת כרטיסך* במענה חוזר *מידי* להודעת ווצאפ זו בהתאם לתוכן  ההצעה. \n\n",
+  he: "*נא לאשר את הנפקת כרטיסך* במענה חוזר *מידי* להודעת ווצאפ זו בהתאם לתוכן  ההצעה.\n\n",
 };
 
 const LANGAUGES = { 'en': 'English', 'fr': 'Francais', 'he': 'עברית' };
@@ -35,9 +35,9 @@ const ARR = {
     he: "נחיתה ביום"
 };
 const ITINERARY = {
-    en: "*Itinerary 🌍*\n\n",
-    fr: "*Itinéraire 🌍*\n\n",
-    he: "*מסלול הטיסות 🌍*\n\n"
+    en: "*Itinerary 🌍*",
+    fr: "*Itinéraire 🌍*",
+    he: "*מסלול הטיסות 🌍*"
 };
 const EN_MONTH_NUMBERS = {'JAN': 1, 'FEB': 2, 'MAR': 3, 'APR': 4, 'MAY': 5, 'JUN': 6, 'JUL': 7, 'AUG': 8, 'SEP': 9, 'OCT': 10, 'NOV': 11, 'DEC': 12};
 

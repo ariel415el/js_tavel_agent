@@ -29,11 +29,14 @@ function parseAmadeusCode(code) {
 
 function summarise(flights, language, airports_dict) {
   const airports = flights.map(flight => airports_dict[flight.depart_airport]).concat(airports_dict[flights[flights.length - 1].dest_airport]);
+  var output = '';
   if (language === 'he') {
-    return airports.reverse().join(' ⬅️️ ');
+    output =  airports.join(' ⬅️️ ');
   } else {
-    return airports.join(' ➡️ ');
+    output = airports.join(' ➡️ ');
   }
+  output += "\n\n"
+  return output
 }
 
 
@@ -57,12 +60,18 @@ function parseTimeAndDate(time, date, language) {
 }
 
 function itinerary(flights, airports_dict, language) {
-  let text = "";
+  var text = ITINERARY[language] + '\n';
 
   for (let i = 0; i < flights.length; i++) {
     const flight = flights[i];
     text += `${AIRLINES[flight.airline]} - *${flight.airline}${flight.flight_code}*\n`;
-    text += `${airports_dict[flight.depart_airport]} (${flight.depart_airport}) ➡️ ${airports_dict[flight.dest_airport]} (${flight.dest_airport})\n`;
+
+    if (language === 'he') {
+        text += `${airports_dict[flight.dest_airport]} (${flight.dest_airport}) ⬅️️ ${airports_dict[flight.depart_airport]} (${flight.depart_airport})\n`;
+    } else {
+        text += `${airports_dict[flight.depart_airport]} (${flight.depart_airport}) ➡️ ${airports_dict[flight.dest_airport]} (${flight.dest_airport})\n`;
+    }
+
     text += `${SEAT_CODES[language][flight.class_code]}\n`;
     text += `${DPT[language]} ${parseTimeAndDate(flight.depart_time, flight.depart_date, language)}\n`;
     text += `${ARR[language]} ${parseTimeAndDate(flight.dest_time, flight.dest_date, language)}\n`;
@@ -72,7 +81,7 @@ function itinerary(flights, airports_dict, language) {
   return text;
 }
 
-function prepare_airports(language) {
+function prepare_airports_dict(language) {
 
   const lan = language === 'he' ? 'He' : 'En';
   airports = Object.fromEntries(
@@ -84,23 +93,24 @@ function prepare_airports(language) {
   return airports
 }
 
-function construct_msg(code, language) {
-  let msg = HALLO[language];
-  console
-  var airports = prepare_airports(language);
+function construct_msg(amadeus_code, language) {
+  var airports = prepare_airports_dict(language);
+  const flights = parseAmadeusCode(amadeus_code);
+  const flight_summary = summarise(flights, language, airports);
 
-  const flights = parseAmadeusCode(code);
-  msg += `${summarise(flights, language, airports)}\n\n`;
+  var msg = '';
+
+  msg += HALLO[language];
+
+  msg += flight_summary;
 
   msg += KINDLY_REPLY[language];
 
-  msg += ITINERARY[language];
+  msg += itinerary(flights, airports, language);
 
-  msg += `${itinerary(flights, airports, language)}`;
+  msg += FINAL[language] + '\n\n';
 
-  msg += `${FINAL[language]}\n\n`;
-
-  msg += `${GAD_CONTACT}\n\n`;
+  msg += GAD_CONTACT + '\n\n';
 
   return msg;
 }
